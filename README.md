@@ -25,11 +25,11 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
   - https://api.phila.gov/ais/v2/search/1400%20john%20f%20kennedy%20blvd
 
-- [ ]  Use "opa_account_num" to join your service requests subset to the Violations dataset
+- [x]  Use "opa_account_num" to join your service requests subset to the Violations dataset
 
-  - [ ] Download https://phl.carto.com/api/v2/sql?&filename=violations&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20violations%20WHERE%20violationdate%20%3E=%20%272019-01-01%27
+  - [x] Download https://phl.carto.com/api/v2/sql?&filename=violations&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20violations%20WHERE%20violationdate%20%3E=%20%272019-01-01%27
 
-  - [ ] JOIN to service requests on opa_account_num
+  - [x] JOIN to service requests on opa_account_num
 
 - [ ]  Perform analysis
 

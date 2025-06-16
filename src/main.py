@@ -2,8 +2,7 @@ import pandas as pd
 import requests
 import urllib.parse
 
-download_path = '311_requests.csv'
-service_requests_df = pd.read_csv(download_path)
+service_requests_df = pd.read_csv('311_requests.csv')
 l_and_i_requests_df = service_requests_df.query("agency_responsible == 'License & Inspections'").sample(n=10)
 
 def request_opa_account_number(address):
@@ -18,4 +17,9 @@ def request_opa_account_number(address):
         return ''
 
 l_and_i_requests_df['opa_account_num'] = l_and_i_requests_df['address'].apply(request_opa_account_number)
-print(l_and_i_requests_df)
+violations_df = pd.read_csv('violations.csv')
+violations_df['opa_account_num'] = violations_df['opa_account_num'].astype(str)
+
+join = pd.merge(violations_df, l_and_i_requests_df, how='outer', on='opa_account_num')
+
+join.to_csv('joined_data.csv', index=False)
