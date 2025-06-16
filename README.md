@@ -13,15 +13,15 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
 - [x] Set up initial Dockerfile
 
-- [ ] Set up initial Python script and dependencies
+- [r] Set up initial Python script and dependencies
 
-- [ ] Grab 311 tickets for 2025 assigned to L&I
+- [x] Grab 311 tickets for 2025 assigned to L&I
 
-  - [ ] Download https://phl.carto.com/api/v2/sql?filename=public_cases_fc&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20FROM%20public_cases_fc%20WHERE%20requested_datetime%20%3E=%20%272025-01-01%27%20AND%20requested_datetime%20%3C%20%272026-01-01%27
+  - [x] Download https://phl.carto.com/api/v2/sql?filename=public_cases_fc&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20FROM%20public_cases_fc%20WHERE%20requested_datetime%20%3E=%20%272025-01-01%27%20AND%20requested_datetime%20%3C%20%272026-01-01%27
 
-  - [ ] Select tickets assigned to L&I
+  - [x] Select tickets assigned to L&I
 
-- [ ] Use AIS API to search  by address to get the "opa_account_num" for each service request
+- [x] Use AIS API to search  by address to get the "opa_account_num" for each service request
 
   - https://api.phila.gov/ais/v2/search/1400%20john%20f%20kennedy%20blvd
 
