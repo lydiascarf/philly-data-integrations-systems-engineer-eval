@@ -11,7 +11,7 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
 - [x] Write up initial README
 
-- [ ] Set up initial Dockerfile
+- [x] Set up initial Dockerfile
 
 - [ ] Set up initial Python script and dependencies
 
