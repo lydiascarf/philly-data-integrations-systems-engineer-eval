@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -14,20 +15,26 @@ def find_requests_not_closed(df):
 
 def run_analysis():
     df = pd.read_csv('l_i_requests.csv')
+    output_dir = '/output'
+    os.makedirs(output_dir, exist_ok=True)
+
     current_year_requests = find_2025_l_i_requests(df)
-    current_year_requests.to_csv('current_year_requests.csv', index=False)
-    print("current year requests")
-    print(len(current_year_requests))
+    current_year_requests.to_csv(f'{output_dir}/current_year_requests.csv', index=False)
 
     requests_violation_issued = find_requests_violation_issued(current_year_requests)
-    requests_violation_issued.to_csv('requests_violation_issued.csv', index=False)
-    print("percent violation issued")
-    print(len(requests_violation_issued) / len(df) * 100)
+    requests_violation_issued.to_csv(f'{output_dir}/requests_violation_issued.csv', index=False)
 
     requests_not_closed = find_requests_not_closed(current_year_requests)
-    requests_not_closed.to_csv('requests_not_closed.csv', index=False)
-    print("percent not closed")
-    print(len(requests_not_closed) / len(df) * 100)
+    requests_not_closed.to_csv(f'{output_dir}/requests_not_closed.csv', index=False)
+
+    output = (f'Current year L&I requests count: {len(current_year_requests)}\n'
+              f'Current year L&I requests percent with violation issued: {len(requests_violation_issued) / len(df) * 100}\n'
+              f'Current year L&I requests percent not closed: {len(requests_not_closed) / len(df) * 100}\n'
+              )
+    print(output)
+    with open(os.path.join(output_dir, 'summary.txt'), 'w') as f:
+        f.write(output)
+
 
 run_analysis()
 

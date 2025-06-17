@@ -1,5 +1,13 @@
 # Data Integrations Systems Engineer Final Evaluation
 
+## How to run
+
+```
+docker build -t evaluation .
+docker run -v ~/output:/output evaluation
+```
+
+The script will output several files into `~/output` on host. The `summary.txt` files includes the results of the analysis.
 
 ### Problem Statement
 
@@ -13,7 +21,7 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
 - [x] Set up initial Dockerfile
 
-- [r] Set up initial Python script and dependencies
+- [x] Set up initial Python script and dependencies
 
 - [x] Grab 311 tickets for 2025 assigned to L&I
 
@@ -39,7 +47,7 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
   - [x] What percentage of these service requests have not been closed? (i.e. L&I has not finished inspecting them)
 
-- [ ] Dump results into home
+- [x] Dump results into home
 
 - [ ] Test Dockerfile
 
