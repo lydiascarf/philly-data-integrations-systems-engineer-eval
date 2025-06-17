@@ -31,13 +31,13 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
   - [x] JOIN to service requests on opa_account_num
 
-- [ ]  Perform analysis
+- [x]  Perform analysis
 
-  - [ ] How many service requests since the beginning of the year has 311 associated with “License & Inspections” as the agency_responsible? 
+  - [x] How many service requests since the beginning of the year has 311 associated with “License & Inspections” as the agency_responsible? 
     
-  - [ ] What percentage of these service requests have resulted in the issuance of a code violation? 
+  - [x] What percentage of these service requests have resulted in the issuance of a code violation? 
 
-  - [ ] What percentage of these service requests have not been closed? (i.e. L&I has not finished inspecting them)
+  - [x] What percentage of these service requests have not been closed? (i.e. L&I has not finished inspecting them)
 
 - [ ] Dump results into home
 
