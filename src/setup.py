@@ -48,7 +48,7 @@ def prepare_l_i_requests():
     else:
         service_requests_df = get_service_requests()
         violations_df = get_violations()
-        l_i_requests_df = service_requests_df.query("agency_responsible == 'License & Inspections'").sample(n=10)
+        l_i_requests_df = service_requests_df.query("agency_responsible == 'License & Inspections'")
         l_i_requests_df['opa_account_num'] = l_i_requests_df['address'].apply(request_opa_account_number)
         df = pd.merge(violations_df, l_i_requests_df, how='inner', on='opa_account_num')
         df.to_csv(download_path, index=False)
