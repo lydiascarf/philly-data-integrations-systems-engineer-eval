@@ -1,0 +1,3 @@
+Current year L&I requests count: 128324
+Current year L&I requests percent with violation issued: 100.0
+Current year L&I requests percent not closed: 54.68891244038527
