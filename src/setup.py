@@ -25,7 +25,7 @@ def get_violations():
     else:
         print('Downloading violations csv')
         url = "https://phl.carto.com/api/v2/sql?&filename=violations&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20violations%20WHERE%20violationdate%20%3E=%20%272019-01-01%27"
-        df = pd.read_csv(url)
+        df = pd.read_csv(url, dtype={'opa_account_num': str})
         df.to_csv(download_path, index=False)
     return df
 
@@ -48,11 +48,9 @@ def prepare_l_i_requests():
     else:
         service_requests_df = get_service_requests()
         violations_df = get_violations()
-        l_and_i_requests_df = service_requests_df.query("agency_responsible == 'License & Inspections'").sample(n=500)
-        l_and_i_requests_df['opa_account_num'] = l_and_i_requests_df['address'].apply(request_opa_account_number)
-        violations_df['opa_account_num'] = violations_df['opa_account_num'].astype(str)
-
-        df = pd.merge(violations_df, l_and_i_requests_df, how='right', on='opa_account_num')
+        l_i_requests_df = service_requests_df.query("agency_responsible == 'License & Inspections'").sample(n=10)
+        l_i_requests_df['opa_account_num'] = l_i_requests_df['address'].apply(request_opa_account_number)
+        df = pd.merge(violations_df, l_i_requests_df, how='inner', on='opa_account_num')
         df.to_csv(download_path, index=False)
 
 prepare_l_i_requests()
