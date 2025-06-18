@@ -9,11 +9,21 @@ docker run -v ~/output:/output evaluation
 
 The script will output several files into `~/output` on host. The `summary.txt` files includes the results of the analysis.
 
-### Problem Statement
+## Problem Statement
 
 The Philly311 contact center services non-emergency requests from residents, such as potholes, illegal dumping, and other public issues. These requests/complaints are available for the public to see here.  311 routes certain service requests to the department of Licenses and Inspections (service requests for which L&I is the “agency_responsible”), and then L&I sends out inspectors to determine if there is a code violation that needs to be issued. 
 
-### Plan
+### Results of analysis
+
+My analysis is summarized below:
+
+Current year L&I requests count: 128324
+Current year L&I requests percent with violation issued: 100.0
+Current year L&I requests percent not closed: 54.68891244038527
+
+While 100% violations issued seems odd to me, and I therefore wonder if I should have derived this differently, if I take the results at face value they would suggest that 311 requests are leading to violations being issued consistently, and that approximately one in two of those requests are closed for the year. Not knowing much of the context for what it takes to close a request that leads to an L&I code violation, this seems reasonable to me, which suggests the process is working well, though there is perhaps room for improvement. We could investigate further by looking into mean time to resolution.
+
+## Plan
 
 - [x] Initialize git repo
 
@@ -49,8 +59,22 @@ The Philly311 contact center services non-emergency requests from residents, suc
 
 - [x] Dump results into home
 
-- [ ] Test Dockerfile
+- [x] Test Dockerfile
 
-- [ ] Clean up README
+- [x] Clean up README
 
+
+### Next Steps
+
+A few things I would like to do given more time:
+
+- Improve error handling
+
+- Parallelize calls to AIS API so they don't take so long
+
+- Specify dtypes on CSVs during import
+
+- Break up the setup file into several files to improve Docker's caching during builds
+
+- Add an ENV for skipping cached files
 
